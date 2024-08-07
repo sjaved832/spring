@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="hello" class="org.example.Hello">
+<!--        <property name="message" value="Good Afternoon" />-->
+        <constructor-arg value="Good evening" />
+    </bean>
+    <!-- idref and alias can be used in bean to have multiple name to the bean and to restrict with id for reference-->
+    <bean id="triangle" class="org.example.Triangle">
+        <property name="pointA">
+        <bean class="org.example.Point">
+            <property name="x" value="2" />
+            <property name="y" value="3" />
+        </bean>
+        </property>
+        <property name="pointB">
+            <bean class="org.example.Point">
+                <property name="x" value="4" />
+                <property name="y" value="4" />
+            </bean>
+        </property>
+        <property ref="point3" name="pointC" />
+    </bean>
+
+    <bean id="point3" class="org.example.Point">
+        <property name="x" value="0" />
+        <property name="y" value="0" />
+    </bean>
+
+</beans>
